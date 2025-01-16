@@ -12,7 +12,7 @@
             :class="['message', message.role]">
             <!-- 只显示AI头像 -->
             <div v-if="message.role === 'assistant'" class="avatar">
-              <img src="/avatar.jpg" alt="道长" />
+              <img src="/avatar.jpg" alt="婷婷" />
             </div>
             <div 
               class="bubble" 
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch, nextTick } from 'vue';
+import { ref, computed, watch, nextTick } from 'vue';
 import AIChatBox from '../components/AIChatBox.vue';
 
 const chatBox = ref(null);
@@ -59,7 +59,7 @@ watch(
       }
     }, 100);
   },
-  { deep: true } // 添加 deep: true 以监听深层变化
+  { deep: true }
 );
 
 // 添加自动滚动函数
@@ -111,12 +111,12 @@ watch(
   top: -1rem;
   left: 50%;
   transform: translateX(-50%);
-  background: #E3BC9A; /* 典雅的米褐色 */
-  border: 1px solid #B88D57; /* 古铜色边框 */
+  background: #FFE4E1; /* 改为浅粉色 */
+  border: 1px solid #FFB6C1; /* 改为粉色边框 */
   border-radius: 0.5rem 0.5rem 0 0;
   padding: 0.5rem 2.5rem;
   cursor: pointer;
-  box-shadow: 0 -2px 6px rgba(184, 141, 87, 0.2);
+  box-shadow: 0 -2px 6px rgba(255, 182, 193, 0.3); /* 粉色阴影 */
   transition: all 0.3s ease;
   z-index: 100;
   font-size: 1.2rem;
@@ -124,16 +124,16 @@ watch(
   align-items: center;
   justify-content: center;
   min-width: 100px;
-  /* 添加云纹背景 */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20' viewBox='0 0 80 20'%3E%3Cpath d='M30,10 Q35,5 40,10 Q45,15 50,10' fill='none' stroke='%23B88D57' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
+  /* 添加粉色云纹背景 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20' viewBox='0 0 80 20'%3E%3Cpath d='M30,10 Q35,5 40,10 Q45,15 50,10' fill='none' stroke='%23FFB6C1' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
   background-size: 80px 20px;
   background-repeat: repeat-x;
   background-position: center;
 }
 
 .expand-button:hover {
-  background-color: #D4A373; /* 稍深的米褐色 */
-  box-shadow: 0 -2px 12px rgba(184, 141, 87, 0.3);
+  background-color: #FFB6C1; /* 鼠标悬停时的粉色 */
+  box-shadow: 0 -2px 12px rgba(255, 182, 193, 0.4);
   transform: translateX(-50%) translateY(2px);
 }
 
@@ -142,7 +142,7 @@ watch(
   transition: transform 0.3s ease;
   font-size: 1.2rem;
   line-height: 1;
-  color: #8C4E37; /* 深褐色箭头 */
+  color: #FF69B4; /* 深粉色箭头 */
 }
 
 .arrow-up {
@@ -151,16 +151,16 @@ watch(
 
 .chat-container {
   height: 100%;
-  background: rgba(252, 248, 242, 0.95); /* 米白色背景 */
+  background: rgba(255, 248, 250, 0.95); /* 浅粉色背景 */
   padding: 0.5rem;
-  box-shadow: 0 4px 12px rgba(184, 141, 87, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
   backdrop-filter: blur(10px);
-  border: 1px solid #B88D57;
-  /* 添加云纹背景 */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M30,60 Q45,45 60,60 Q75,75 90,60 M15,30 Q30,15 45,30 Q60,45 75,30 M45,90 Q60,75 75,90 Q90,105 105,90' fill='none' stroke='%23B88D57' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
+  border: 1px solid #FFB6C1;
+  /* 添加粉色云纹背景 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M30,60 Q45,45 60,60 Q75,75 90,60 M15,30 Q30,15 45,30 Q60,45 75,30 M45,90 Q60,75 75,90 Q90,105 105,90' fill='none' stroke='%23FFB6C1' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
   background-size: 120px 120px;
 }
 
@@ -170,7 +170,7 @@ watch(
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   scrollbar-width: thin;
-  scrollbar-color: rgba(184, 141, 87, 0.3) transparent;
+  scrollbar-color: rgba(255, 182, 193, 0.3) transparent;
 }
 
 .chat-history::-webkit-scrollbar {
@@ -182,7 +182,7 @@ watch(
 }
 
 .chat-history::-webkit-scrollbar-thumb {
-  background-color: rgba(184, 141, 87, 0.3);
+  background-color: rgba(255, 182, 193, 0.5);
   border-radius: 3px;
 }
 
@@ -226,23 +226,23 @@ watch(
 
 /* AI消息的特殊样式 */
 .ai .bubble {
-  background: rgba(227, 188, 154, 0.2); /* 浅米色背景 */
-  border: 1px solid rgba(184, 141, 87, 0.3);
+  background: rgba(255, 228, 225, 0.4); /* 浅粉色背景 */
+  border: 1px solid rgba(255, 182, 193, 0.4);
   border-top-left-radius: 0.2rem;
   margin-right: -44px;
   padding-left: 44px;
   text-indent: -36px;
-  color: #5C3D2E; /* 深褐色文字 */
+  color: #DB7093; /* 深粉色文字 */
 }
 
 /* 用户消息样式 */
 .user .bubble {
   max-width: 85%;
-  background: #B88D57; /* 古铜色背景 */
-  color: #FCF8F2; /* 米白色文字 */
+  background: #FFB6C1; /* 粉色背景 */
+  color: #FFF5F5; /* 浅色文字 */
   border-top-right-radius: 0.2rem;
   margin-left: 0;
-  border: 1px solid rgba(92, 61, 46, 0.2);
+  border: 1px solid rgba(219, 112, 147, 0.2);
 }
 
 /* 确保消息内容中的换行符正确显示 */
@@ -355,10 +355,10 @@ watch(
   content: '';
   display: inline-block;
   vertical-align: middle;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   margin-left: 4px;
-  background-image: url("data:image/svg+xml,%3Csvg t='1737011556781' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='12573'%3E%3Cpath d='M510.977 62.648c-247.511 0-448.16 200.649-448.16 448.16s200.649 448.16 448.16 448.16c247.511 0 448.16-200.649 448.16-448.16s-200.649-448.16-448.16-448.16z m0 174.782c33.002 0 59.756 26.754 59.756 59.756s-26.754 59.755-59.756 59.755-59.755-26.754-59.755-59.755c0-33.004 26.753-59.756 59.755-59.756z m0 700.624c-117.979 0-213.623-95.641-213.623-213.622 0-117.979 90.394-213.622 213.623-213.622l0.001-0.002c117.98-0.001 213.622-95.641 213.622-213.622 0-111.627-85.625-203.242-194.777-212.785-0.144-0.152-0.296-0.292-0.443-0.44 227.422 9.64 408.841 197.052 408.841 426.849 0.001 235.961-191.284 427.246-427.245 427.246z' p-id='12574' fill='%23dbdbdb'%3E%3C/path%3E%3Cpath d='M451.222 724.431c0 33.002 26.753 59.755 59.755 59.755s59.755-26.753 59.755-59.755-26.753-59.755-59.755-59.755-59.755 26.753-59.755 59.755z' p-id='12575' fill='%23dbdbdb'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M689.11 121.72c-70.21 0-133.67 28.85-179.2 75.32-45.53-46.48-108.99-75.32-179.2-75.32-138.56 0-250.89 112.32-250.89 250.87 0 286.73 430.08 537.6 430.08 537.6S940 659.33 940 372.6c0-138.55-112.32-250.88-250.89-250.88z' fill='%23EC87C0'/%3E%3Cpath d='M689.11 121.72c-12.17 0-24.12 0.88-35.83 2.56 121.58 17.39 215.04 121.93 215.04 248.31 0 235.84-290.97 447.42-394.25 515.1 22.29 14.61 35.84 22.51 35.84 22.51S940 659.33 940 372.6c0-138.55-112.32-250.88-250.89-250.88z' fill='%23FFFFFF' opacity='.2'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
   animation: rotate 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -368,24 +368,24 @@ watch(
 
 @keyframes rotate {
   0% {
-    transform: rotate(0deg) scale(1);
+    transform: rotate(-10deg) scale(1);
   }
   50% {
-    transform: rotate(180deg) scale(0.95);
+    transform: rotate(10deg) scale(0.95);
   }
   100% {
-    transform: rotate(360deg) scale(1);
+    transform: rotate(-10deg) scale(1);
   }
 }
 
 @keyframes appear {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.8) rotate(-10deg);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(-10deg);
   }
 }
 
@@ -396,48 +396,48 @@ watch(
 @keyframes disappear {
   0% {
     opacity: 1;
-    transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(-10deg);
   }
   100% {
     opacity: 0;
-    transform: scale(0.8) rotate(360deg);
+    transform: scale(0.8) rotate(10deg);
   }
 }
 
 /* 深色模式下的光标颜色调整 */
 @media (prefers-color-scheme: dark) {
   .typing::after {
-    background-image: url("data:image/svg+xml,%3Csvg t='1737011556781' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='12573'%3E%3Cpath d='M510.977 62.648c-247.511 0-448.16 200.649-448.16 448.16s200.649 448.16 448.16 448.16c247.511 0 448.16-200.649 448.16-448.16s-200.649-448.16-448.16-448.16z m0 174.782c33.002 0 59.756 26.754 59.756 59.756s-26.754 59.755-59.756 59.755-59.755-26.754-59.755-59.755c0-33.004 26.753-59.756 59.755-59.756z m0 700.624c-117.979 0-213.623-95.641-213.623-213.622 0-117.979 90.394-213.622 213.623-213.622l0.001-0.002c117.98-0.001 213.622-95.641 213.622-213.622 0-111.627-85.625-203.242-194.777-212.785-0.144-0.152-0.296-0.292-0.443-0.44 227.422 9.64 408.841 197.052 408.841 426.849 0.001 235.961-191.284 427.246-427.245 427.246z' p-id='12574' fill='%23ffffff'%3E%3C/path%3E%3Cpath d='M451.222 724.431c0 33.002 26.753 59.755 59.755 59.755s59.755-26.753 59.755-59.755-26.753-59.755-59.755-59.755-59.755 26.753-59.755 59.755z' p-id='12575' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M689.11 121.72c-70.21 0-133.67 28.85-179.2 75.32-45.53-46.48-108.99-75.32-179.2-75.32-138.56 0-250.89 112.32-250.89 250.87 0 286.73 430.08 537.6 430.08 537.6S940 659.33 940 372.6c0-138.55-112.32-250.88-250.89-250.88z' fill='%23FFFFFF'/%3E%3Cpath d='M689.11 121.72c-12.17 0-24.12 0.88-35.83 2.56 121.58 17.39 215.04 121.93 215.04 248.31 0 235.84-290.97 447.42-394.25 515.1 22.29 14.61 35.84 22.51 35.84 22.51S940 659.33 940 372.6c0-138.55-112.32-250.88-250.89-250.88z' fill='%23EC87C0' opacity='.2'/%3E%3C/svg%3E");
     opacity: 0.7;
   }
 }
 
 /* 确保消息内容中的链接样式正确 */
 .bubble :deep(a) {
-  color: #8C4E37;
+  color: #DB7093;
   text-decoration: none;
-  border-bottom: 1px solid rgba(140, 78, 55, 0.3);
+  border-bottom: 1px solid rgba(219, 112, 147, 0.3);
 }
 
 .bubble :deep(a):hover {
-  border-bottom-color: #8C4E37;
+  border-bottom-color: #DB7093;
 }
 
 /* 确保代码块样式正确 */
 .bubble :deep(pre) {
-  background: rgba(92, 61, 46, 0.05);
+  background: rgba(219, 112, 147, 0.05);
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(184, 141, 87, 0.2);
+  border: 1px solid rgba(255, 182, 193, 0.3);
   overflow-x: auto;
   margin: 0.5rem 0;
 }
 
 .bubble :deep(code) {
-  background: rgba(92, 61, 46, 0.05);
+  background: rgba(219, 112, 147, 0.05);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-size: 0.9em;
-  color: #5C3D2E;
+  color: #DB7093;
 }
 </style> 
