@@ -16,12 +16,28 @@
       <span v-if="isLoading">⋯</span>
       <span v-else>▲</span>
     </button>
+    <button 
+      @click="showPromptSettings = true"
+      class="settings-button"
+      title="设置角色提示词"
+    >
+      ⚙️
+    </button>
   </div>
+  
+  <!-- 提示词设置弹窗 -->
+  <PromptSettings 
+    v-if="showPromptSettings"
+    v-model:show="showPromptSettings"
+    :prompt-settings="promptSettings"
+    @update:settings="updatePromptSettings"
+  />
 </template>
 
 <script setup>
-import { ref, nextTick, reactive } from 'vue';
+import { ref, nextTick, reactive, onMounted } from 'vue';
 import OpenAI from 'openai';
+import PromptSettings from './PromptSettings.vue';
 
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
@@ -151,6 +167,28 @@ const chatHistory = ref([
 ]);
 const isLoading = ref(false);
 
+// 将taoistSystemPrompt改为响应式对象
+const promptSettings = ref(taoistSystemPrompt);
+const showPromptSettings = ref(false);
+
+// 初始化时从本地存储加载设置
+onMounted(() => {
+  const savedSettings = localStorage.getItem('promptSettings');
+  if (savedSettings) {
+    try {
+      promptSettings.value = JSON.parse(savedSettings);
+    } catch (e) {
+      console.error('Failed to parse saved settings:', e);
+    }
+  }
+});
+
+// 更新提示词设置
+const updatePromptSettings = (newSettings) => {
+  promptSettings.value = newSettings;
+  localStorage.setItem('promptSettings', JSON.stringify(newSettings));
+};
+
 // Markdown 处理函数
 const processMarkdown = (text) => {
   const processed = text
@@ -203,7 +241,7 @@ const handleSendMessage = async () => {
         messages: [
           { 
             role: "system", 
-            content: JSON.stringify(taoistSystemPrompt) 
+            content: JSON.stringify(promptSettings.value) 
           },
           ...chatHistory.value
             .filter(msg => !msg.isTyping)
@@ -345,6 +383,33 @@ defineExpose({
 
 /* 添加按钮点击效果 */
 .send-button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(255, 182, 193, 0.2);
+}
+
+.settings-button {
+  padding: 0.8rem 1.2rem;
+  background: #FFB6C1;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(255, 182, 193, 0.3);
+}
+
+.settings-button:hover {
+  background: #FF69B4;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 182, 193, 0.4);
+}
+
+.settings-button:active {
   transform: translateY(1px);
   box-shadow: 0 1px 2px rgba(255, 182, 193, 0.2);
 }
