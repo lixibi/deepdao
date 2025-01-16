@@ -12,19 +12,18 @@
 ## 环境要求
 
 - Node.js 16.0 或更高版本
-- npm 7.0 或更高版本
+- Bun 1.0 或更高版本
 
 ## 本地开发设置
 
 1. 克隆项目
 ```bash
 git clone <你的仓库地址>
-cd ai-agent
 ```
 
 2. 安装依赖
 ```bash
-npm install
+bun install
 ```
 
 3. 配置环境变量
@@ -38,7 +37,7 @@ VITE_DEEPSEEK_API_KEY=your_api_key_here
 
 4. 启动开发服务器
 ```bash
-npm run dev
+bun dev
 ```
 
 5. 打开浏览器访问 http://localhost:5173
@@ -47,7 +46,7 @@ npm run dev
 
 ### 本地构建
 ```bash
-npm run build
+bun run build
 ```
 
 ### Vercel 部署
@@ -65,9 +64,9 @@ npm run build
 
 4. 部署设置
    - Framework Preset: Vue.js
-   - Build Command: `npm run build`
+   - Build Command: `bun run build`
    - Output Directory: `dist`
-   - Install Command: `npm install`
+   - Install Command: `bun install`
 
 5. 点击 Deploy 开始部署
 
@@ -87,16 +86,16 @@ src/
 
 ```bash
 # 开发环境
-npm run dev
+bun dev
 
 # 生产环境构建
-npm run build
+bun run build
 
 # 预览生产构建
-npm run preview
+bun run preview
 
 # 类型检查
-npm run type-check
+bun run type-check
 ```
 
 ## 注意事项

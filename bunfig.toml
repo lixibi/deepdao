@@ -1,0 +1,30 @@
+[install]
+# 使用精确版本
+exact = true
+
+# 自动安装对等依赖
+peer = true
+
+# 使用 lockfile
+lockfile = true
+
+[dev]
+# 开发服务器端口
+port = 5173
+# 自动打开浏览器
+open = true
+
+[build]
+# 构建输出目录
+outdir = "dist"
+# 压缩
+minify = true
+
+[test]
+# 测试覆盖率输出
+coverage = true
+
+[install.cache]
+# 启用依赖缓存
+dir = ".bun/cache"
+enabled = true 
