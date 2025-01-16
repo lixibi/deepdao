@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// App level logic here
+</script>
+
 <template>
   <router-view></router-view>
 </template>

@@ -107,3 +107,7 @@ bun run type-check
 ## 许可证
 
 [MIT License](LICENSE)
+
+![License](https://img.shields.io/github/license/你的用户名/ai-agent)
+![GitHub stars](https://img.shields.io/github/stars/你的用户名/ai-agent)
+![GitHub forks](https://img.shields.io/github/forks/你的用户名/ai-agent)
