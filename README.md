@@ -49,6 +49,41 @@ bun dev
 bun run build
 ```
 
+### Docker 部署
+
+1. 使用 Docker Compose 部署
+```bash
+# 构建并启动容器
+docker-compose up -d
+
+# 查看容器状态
+docker-compose ps
+
+# 查看容器日志
+docker-compose logs -f
+```
+
+2. 使用 Docker 直接部署
+```bash
+# 构建镜像
+docker build -t ai-dao-chat .
+
+# 运行容器
+docker run -d -p 80:80 \
+  -e VITE_DEEPSEEK_API_KEY=your_api_key_here \
+  --name ai-dao-chat \
+  ai-dao-chat
+```
+
+3. 环境变量配置
+- 创建 `.env` 文件或在运行时传入环境变量
+- 确保设置了必要的 API Key
+
+4. 注意事项
+- 确保 80 端口未被占用
+- 生产环境建议使用 HTTPS
+- 可以修改 `nginx.conf` 自定义 Nginx 配置
+
 ### Vercel 部署
 
 1. Fork 此项目到你的 GitHub 账号
